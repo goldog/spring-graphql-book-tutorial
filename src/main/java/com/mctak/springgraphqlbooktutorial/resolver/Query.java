@@ -7,12 +7,18 @@ import com.mctak.springgraphqlbooktutorial.repository.AuthorRepository;
 import com.mctak.springgraphqlbooktutorial.repository.TutorialRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Query implements GraphQLQueryResolver {
-    @Autowired
     private AuthorRepository authorRepository;
-    @Autowired
     private TutorialRepository tutorialRepository;
+    
+    @Autowired
+	public Query(AuthorRepository authorRepository, TutorialRepository tutorialRepository) {
+		this.authorRepository = authorRepository;
+		this.tutorialRepository = tutorialRepository;
+	}
 
     public Iterable<Author> findAllAuthors() {
         return authorRepository.findAll();

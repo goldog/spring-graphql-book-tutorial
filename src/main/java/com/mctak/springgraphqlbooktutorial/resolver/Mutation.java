@@ -9,14 +9,20 @@ import com.mctak.springgraphqlbooktutorial.repository.AuthorRepository;
 import com.mctak.springgraphqlbooktutorial.repository.TutorialRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javassist.NotFoundException;
 
+@Component
 public class Mutation implements GraphQLMutationResolver {
-    @Autowired
     private AuthorRepository authorRepository;
-    @Autowired
     private TutorialRepository tutorialRepository;
+    
+	@Autowired
+	public Mutation(AuthorRepository authorRepository, TutorialRepository tutorialRepository) {
+		this.authorRepository = authorRepository;
+		this.tutorialRepository = tutorialRepository;
+	}
 
     public Author createAuthor(String name, Integer age) {
         Author author = new Author();
