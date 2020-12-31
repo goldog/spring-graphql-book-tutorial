@@ -1,12 +1,13 @@
 package com.mctak.springgraphqlbooktutorial.resolver;
 
-import com.coxautodev.graphql.tools.GraphQLResolver;
 import com.mctak.springgraphqlbooktutorial.model.Author;
 import com.mctak.springgraphqlbooktutorial.model.Tutorial;
 import com.mctak.springgraphqlbooktutorial.repository.AuthorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import graphql.kickstart.tools.GraphQLResolver;
 
 @Component
 public class TutorialResolver implements GraphQLResolver<Tutorial> {
